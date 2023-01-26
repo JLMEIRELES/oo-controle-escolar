@@ -13,6 +13,10 @@ public class Student extends User{
     private String matricula;
     private String filiacao;
 
+    @OneToOne (cascade = CascadeType.ALL)
+    @JoinColumn(name = "school_report_id")
+    private SchoolReport schoolReport;
+
     public Student(){
 
     }

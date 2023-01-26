@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users" )
@@ -24,6 +25,13 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_type")
     private UserType userType;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
+    private Address address;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Phone> phones;
 
     public String getCpf() {
         return cpf;

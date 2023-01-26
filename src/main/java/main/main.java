@@ -11,5 +11,4 @@ public class main {
         EntityManager em = JPAUtil.getEntityManager();
         System.out.println("Hello World");
     }
-
 }
