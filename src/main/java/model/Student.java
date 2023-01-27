@@ -17,6 +17,9 @@ public class Student extends User{
     @JoinColumn(name = "school_report_id")
     private SchoolReport schoolReport;
 
+    @OneToOne (mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
+    private Records records;
+
     public Student(){
 
     }

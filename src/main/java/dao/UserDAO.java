@@ -1,7 +1,6 @@
 package dao;
 
 import model.User;
-
 import javax.persistence.EntityManager;
 
 public class UserDAO {
