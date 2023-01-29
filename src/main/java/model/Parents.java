@@ -7,7 +7,8 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Parents extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @Column
     private String filho;
 
     public Parents () {

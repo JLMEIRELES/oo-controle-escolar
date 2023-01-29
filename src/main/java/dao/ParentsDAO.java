@@ -1,21 +1,41 @@
 package dao;
 
 import model.Parents;
-import model.Student;
-import model.User;
-
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class ParentsDAO {
 
-    private final EntityManager entityManager;
+    EntityManagerFactory emf;
+    EntityManager em;
 
-    public ParentsDAO(EntityManager entityManager){
-        this.entityManager = entityManager;
+    public ParentsDAO () {
+        emf = Persistence.createEntityManagerFactory("controle-escolar");
+        em = emf.createEntityManager();
     }
 
-    public void createParents(Parents parents){
-        this.entityManager.persist(parents);
+    public void insert(Parents _parents) {
+        em.getTransaction().begin();
+        em.merge(_parents);
+        em.getTransaction().commit();
+        emf.close();
+    }
+
+    public void update(Parents _parents) {
+        em.getTransaction().begin();
+        em.merge(_parents);
+        em.getTransaction().commit();
+        emf.close();
+    }
+
+    public void delete(Parents _parents) {
+        em.getTransaction().begin();
+        Query q = em.createNativeQuery("DELETE FROM parents WHERE id = " + _parents.getId());
+        q.executeUpdate();
+        em.getTransaction().commit();
+        emf.close();
     }
 
 }

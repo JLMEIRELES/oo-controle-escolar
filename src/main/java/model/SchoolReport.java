@@ -8,15 +8,28 @@ public class SchoolReport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @Column
     private Integer diasLetivos;
+    @Column
     private Integer faltas;
+
+
+    @Column
     private String cargaHoraria;
 
     @OneToOne(mappedBy = "schoolReport")
     @PrimaryKeyJoinColumn
     private Student student;
 
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public Integer getDiasLetivos() {
         return diasLetivos;
     }

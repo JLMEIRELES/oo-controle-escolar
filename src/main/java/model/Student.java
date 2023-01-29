@@ -9,8 +9,10 @@ public class Student extends User{
 
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @Column
     private String matricula;
+    @Column
     private String filiacao;
 
     @OneToOne (cascade = CascadeType.ALL)
@@ -28,6 +30,15 @@ public class Student extends User{
         this.filiacao = filiacao;
     }
 
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getMatricula() {
         return matricula;
     }
@@ -43,8 +54,6 @@ public class Student extends User{
     public void setFiliacao(String filiacao) {
         this.filiacao = filiacao;
     }
-
-
 }
 
 

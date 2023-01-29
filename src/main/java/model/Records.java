@@ -7,16 +7,27 @@ import javax.persistence.*;
 public class Records {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private int id;
+    @Column
     private String componentesCurriculares;
+    @Column
     private String codigo;
+    @Column
     private String matricula;
+    @Column
     private String filiacao;
 
     @OneToOne(optional = false)
     @JoinColumn(name = "student_id")
     private Student student;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getComponentesCurriculares() {
         return componentesCurriculares;

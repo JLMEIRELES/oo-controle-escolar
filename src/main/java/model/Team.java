@@ -1,14 +1,21 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
 public class Team {
 
+    @Column
     private String codigo;
+    @Column
     private String nome;
+    @Column
     private Date dataInicio;
+    @Column
     private Date dataFim;
+    @Column
     private String turno;
+    @Column
     private EnumTypeClass tipoTurma;
 
     public Team(String codigo, String nome, Date dataInicio, Date dataFim, String turno, EnumTypeClass tipoTurma) {

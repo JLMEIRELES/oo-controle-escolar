@@ -8,13 +8,13 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Teacher extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @Column
     private String formacao;
 
     public Teacher () {
 
     }
-
 
     public Teacher(String formacao) {
         this.formacao = formacao;

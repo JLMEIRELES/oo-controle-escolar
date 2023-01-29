@@ -7,21 +7,26 @@ import javax.persistence.*;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
+    @Column
     private String logradouro;
+    @Column
     private String cep;
+    @Column
     private String numero;
+    @Column
     private String bairro;
+    @Column
     private String complemento;
 
     @OneToOne(mappedBy = "address")
     private User user;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

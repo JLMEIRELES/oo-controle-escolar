@@ -1,18 +1,39 @@
 package dao;
 
 import model.Address;
-import model.Student;
-
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class AddressDAO {
-    private final EntityManager entityManager;
+    EntityManagerFactory emf;
+    EntityManager em;
 
-    public AddressDAO(EntityManager entityManager){
-        this.entityManager = entityManager;
+    public AddressDAO () {
+        emf = Persistence.createEntityManagerFactory("controle-escolar");
+        em = emf.createEntityManager();
     }
 
-    public void createAddress(Address address){
-        this.entityManager.persist(address);
+    public void insert(Address _address) {
+        em.getTransaction().begin();
+        em.merge(_address);
+        em.getTransaction().commit();
+        emf.close();
+    }
+
+    public void update(Address _address) {
+        em.getTransaction().begin();
+        em.merge(_address);
+        em.getTransaction().commit();
+        emf.close();
+    }
+
+    public void delete(Address _address) {
+        em.getTransaction().begin();
+        Query q = em.createNativeQuery("DELETE FROM address WHERE id = " + _address.getId());
+        q.executeUpdate();
+        em.getTransaction().commit();
+        emf.close();
     }
 }

@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.awt.dnd.DropTarget;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -10,21 +11,21 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @Column(unique = true)
+    private int id;
+    @Column
     private String cpf;
+    @Column
     private String nome;
-    @Column(unique = true)
+    @Column
     private String email;
+    @Column
     private String senha;
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "user_type")
-    private UserType userType;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
@@ -33,9 +34,18 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Phone> phones;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCpf() {
         return cpf;
     }
+
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
@@ -46,10 +56,6 @@ public class User {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getEmail() {
