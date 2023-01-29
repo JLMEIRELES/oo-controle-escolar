@@ -18,11 +18,11 @@ public class User {
     @Column(unique = true)
     private String email;
     private String senha;
-    @Column(name = "data_nascimento")
+    @Column(name = "data_nascimento",nullable=true)
     private LocalDate dataNascimento;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_type")
+    @Column(name = "user_type",nullable=true) //vou mudar isso do nullable, eh so pra teste
     private UserType userType;
 
     public String getCpf() {

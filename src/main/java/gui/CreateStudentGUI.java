@@ -2,6 +2,8 @@ package gui;
 
 import dao.StudentDAO;
 import dao.UserDAO;
+import dao.UserDAO.*;
+import model.Student;
 import model.User;
 import util.JPAUtil;
 
@@ -10,9 +12,10 @@ import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
+import java.time.LocalDate;
+import javax.persistence.EntityManager;
 
 public class CreateStudentGUI extends JFrame {
-
     private JTextField inputName;
     private JButton confirmButton;
     private JTextField inputCpf;
@@ -24,14 +27,14 @@ public class CreateStudentGUI extends JFrame {
     private JButton cleanButton;
     private JPanel cadastroAPanel;
 
-    private MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
+    //private MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    public CreateStudentGUI() throws ParseException {
+    public CreateStudentGUI() {
+
         cleanButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 inputCpf.setText("");
-                dataFormatter.install(inputDtNasc);
                 inputDtNasc.setText("");
                 inputEndereco.setText("");
                 inputEmail.setText("");
@@ -40,29 +43,21 @@ public class CreateStudentGUI extends JFrame {
                 inputSenha.setText("");
             }
         });
-    }
+        confirmButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                User user = new User();
+                UserDAO dao = new UserDAO();
+                user.setNome(inputName.getText());
+                user.setCpf(inputCpf.getText());
+                user.setEmail(inputEmail.getText());
+                user.setSenha(inputSenha.getText());
+                user.setDataNascimento(LocalDate.parse("2016-02-06"));
+                dao.createUser(user);
+                JOptionPane.showMessageDialog(null, "Student saved successfully");
 
-    private void onClickSalvar() {
-        StudentDAO studentDAO = new StudentDAO(JPAUtil.getEntityManager());
-        UserDAO userDAO = new UserDAO(JPAUtil.getEntityManager());
-        try {
-            User user = new User();
-            userDAO.createUser(inputCpf.getText(), inputDtNasc.getText(),);
-            studentDAO.createStudent(txtNome.getText(), txtApelido.getText(), txtDtNascimento.getText());
-            JOptionPane.showMessageDialog(this, "Contato salvo com sucesso!");
-            clearFields();
-            contatoList = new ContatoController().listaContatos();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Nao foi possivel salvar contato!n" +
-                            e.getLocalizedMessage()
-            );
-        } catch (ParseException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Data possui formato inválido!n" +
-                            e.getLocalizedMessage()
-            );
-        }
+            }
+        });
     }
 
 
