@@ -14,14 +14,6 @@ public class Building {
     @Column
     private String building_name;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public void setBuildingName(String building_name) {
         this.building_name = building_name;
     }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "exam")
-public class Exam {
+public class Exam{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -13,24 +13,16 @@ public class Exam {
     private Double exam_grade;
 
     @Column
-    private int peso;
+    private int weight;
 
     @Column
-    private Boolean avaliada;
+    private Boolean evaluation;
 
-    public Exam(int id, Double exam_grade, int peso, Boolean avaliada) {
+    public Exam(int id, Double exam_grade, int weight, Boolean evaluation) {
         this.id = id;
         this.exam_grade = exam_grade;
-        this.peso = peso;
-        this.avaliada = avaliada;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
+        this.weight = weight;
+        this.evaluation = evaluation;
     }
 
     public void setExamGrade(Double exam_grade) {
@@ -41,20 +33,20 @@ public class Exam {
         return exam_grade;
     }
 
-    public void setPeso(int peso) {
-        this.peso = peso;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
-    public int getPeso() {
-        return peso;
+    public int getWeight() {
+        return weight;
     }
 
-    public void setAvaliada(Boolean avaliada) {
-        this.avaliada = avaliada;
+    public void isEvaluation(Boolean evaluation) {
+        this.evaluation = evaluation;
     }
 
-    public String getAvaliada() {
-        return avaliada;
+    public Boolean getEvaluation() {
+        return evaluation;
     }
 
     @ManyToOne

@@ -13,14 +13,6 @@ public class Classroom {
     @Column
     private String classroom_code;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public void setClassroomCode(String classroom_code) {
         this.classroom_code = classroom_code;
     }

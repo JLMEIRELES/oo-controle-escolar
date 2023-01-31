@@ -8,4 +8,26 @@ public class FinalGrade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column
+    private Double final_grade;
+
+    @Column
+    private String mencao;
+
+    public void setFinalGrade(Double final_grade) {
+        this.final_grade = final_grade;
+    }
+
+    public Double getFinalGrade() {
+        return final_grade;
+    }
+
+    public void setMencao(String mencao) {
+        this.mencao = mencao;
+    }
+
+    public String getMencao() {
+        return mencao;
+    }
 }

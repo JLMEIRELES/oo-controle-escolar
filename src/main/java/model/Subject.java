@@ -30,14 +30,6 @@ public class Subject {
         this.class_hours = class_hours;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
     public String getSubjectCode() {
         return subject_code;
     }
