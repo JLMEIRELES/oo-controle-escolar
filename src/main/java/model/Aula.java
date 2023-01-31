@@ -1,20 +1,30 @@
 package model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "class")
+@Table(name = "aula")
+public class Aula {
 
-public class Class {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "class_date")
     private LocalDate classDate;
 
     @Column(name = "class_time")
     private LocalTime classTime;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setClassDate(LocalDate classDate) {
         this.classDate = classDate;

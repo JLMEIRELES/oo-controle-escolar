@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "institution")
-
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +30,6 @@ public class Institution {
 
     @Column
     private String website;
-
-    @OneToMany(mappedBy = "institution")
-    private List<Building> building;
 
     public String getCode() {
         return code;
@@ -75,11 +71,4 @@ public class Institution {
         this.website = website;
     }
 
-    public List<Building> getBuilding() {
-        return building;
-    }
-
-    public void setBuilding(List<Building> building) {
-        this.building = building;
-    }
 }

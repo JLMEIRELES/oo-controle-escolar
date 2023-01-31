@@ -1,5 +1,6 @@
 package main;
 
+import dao.UserDAO;
 import util.JPAUtil;
 import javax.persistence.EntityManager;
 

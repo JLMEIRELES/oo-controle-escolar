@@ -23,8 +23,7 @@ public class Subject {
     @OneToMany(mappedBy = "subject")
     private Set<Exam> exam;
 
-    public Team(int id, String subject_code, String subject_name, int class_hours) {
-        this.id = id;
+    public Subject(String subject_code, String subject_name, int class_hours) {
         this.subject_code = subject_code;
         this.subject_name = subject_name;
         this.class_hours = class_hours;
