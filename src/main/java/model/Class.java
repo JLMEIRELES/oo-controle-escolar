@@ -15,9 +15,11 @@ public class Class {
 
     @Column(name = "class_time")
     private LocalTime classTime;
+
     public void setClassDate(LocalDate classDate) {
         this.classDate = classDate;
     }
+
     public LocalDate getClassDate() {
         return classDate;
     }
@@ -25,7 +27,9 @@ public class Class {
     public void setClassTime(LocalTime classTime) {
         this.classTime = classTime;
     }
+
     public LocalTime getClassTime() {
         return classTime;
     }
+
 }

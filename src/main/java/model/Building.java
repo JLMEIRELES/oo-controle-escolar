@@ -25,6 +25,7 @@ public class Building {
     public void setBuildingName(String building_name) {
         this.building_name = building_name;
     }
+
     public String getBuildingName() {
         return building_name;
     }
