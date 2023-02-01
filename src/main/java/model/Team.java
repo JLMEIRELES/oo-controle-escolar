@@ -16,9 +16,9 @@ public class Team {
     @Column
     private String turno;
     @Column
-    private EnumTypeClass tipoTurma;
+    private String tipoTurma;
 
-    public Team(String codigo, String nome, Date dataInicio, Date dataFim, String turno, EnumTypeClass tipoTurma) {
+    public Team(String codigo, String nome, Date dataInicio, Date dataFim, String turno, String tipoTurma) {
         this.codigo = codigo;
         this.nome = nome;
         this.dataInicio = dataInicio;
@@ -67,11 +67,11 @@ public class Team {
         this.turno = turno;
     }
 
-    public EnumTypeClass getTipoTurma() {
+    public String getTipoTurma() {
         return tipoTurma;
     }
 
-    public void setTipoTurma(EnumTypeClass tipoTurma) {
+    public void setTipoTurma(String tipoTurma) {
         this.tipoTurma = tipoTurma;
     }
 

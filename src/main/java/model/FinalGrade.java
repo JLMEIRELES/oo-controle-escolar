@@ -15,6 +15,15 @@ public class FinalGrade {
     @Column
     private String mencao;
 
+    public FinalGrade(){
+
+    }
+
+    public FinalGrade(Double final_grade, String mencao){
+        this.final_grade = final_grade;
+        this.mencao = mencao;
+    }
+
     public void setFinalGrade(Double final_grade) {
         this.final_grade = final_grade;
     }

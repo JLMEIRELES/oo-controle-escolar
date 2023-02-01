@@ -15,6 +15,13 @@ public class Building {
     @Column
     private String building_name;
 
+    public Building(){
+
+    }
+    public Building(String building_name) {
+        this.building_name = building_name;
+    }
+
     public void setBuildingName(String building_name) {
         this.building_name = building_name;
     }
@@ -23,7 +30,6 @@ public class Building {
         return building_name;
     }
 
-    @OneToMany(mappedBy = "building")
-    private Set<Classroom> classroom;
+
 
 }

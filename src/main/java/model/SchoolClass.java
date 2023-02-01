@@ -26,6 +26,18 @@ public class SchoolClass {
     @Column
     private String turno;
 
+    public SchoolClass(){
+
+    }
+
+    public SchoolClass(String codigo, String nome, LocalDate dataInicio, LocalDate dataFim, String turno){
+        this.codigo = codigo;
+        this.nome = nome;
+        this.dataInicio = dataInicio;
+        this.dataFim = dataFim;
+        this.turno = turno;
+    }
+
     public int getId() {
         return id;
     }

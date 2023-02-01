@@ -13,6 +13,14 @@ public class Classroom {
     @Column
     private String classroom_code;
 
+    public Classroom(){
+
+    }
+
+    public Classroom(String classroom_code){
+        this.classroom_code = classroom_code;
+    }
+
     public void setClassroomCode(String classroom_code) {
         this.classroom_code = classroom_code;
     }

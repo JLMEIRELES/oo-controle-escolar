@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 @Table(name = "institution")
+
 public class Institution {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,18 @@ public class Institution {
 
     @Column
     private String website;
+
+    public Institution(){
+
+    }
+    public Institution(String code, String name, String email, String uf, String website){
+        this.code = code;
+        this.name = name;
+        this.email = email;
+        this.uf = uf;
+        this.website = website;
+    }
+
 
     public String getCode() {
         return code;

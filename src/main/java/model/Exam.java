@@ -18,8 +18,10 @@ public class Exam{
     @Column
     private Boolean evaluation;
 
-    public Exam(int id, Double exam_grade, int weight, Boolean evaluation) {
-        this.id = id;
+    public Exam(){
+
+    }
+    public Exam(Double exam_grade, int weight, Boolean evaluation) {
         this.exam_grade = exam_grade;
         this.weight = weight;
         this.evaluation = evaluation;
