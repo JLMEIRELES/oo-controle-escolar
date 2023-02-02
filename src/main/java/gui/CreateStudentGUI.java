@@ -30,7 +30,7 @@ public class CreateStudentGUI extends JFrame {
     private JPanel cadastroAPanel;
     MaskFormatter formatter = null;
     JFormattedTextField inputCpf;
-
+    private String numMatricula;
     public CreateStudentGUI() throws ParseException {
         cleanButton.addActionListener(new ActionListener() {
             @Override
@@ -78,12 +78,14 @@ public class CreateStudentGUI extends JFrame {
         student.setEmail(inputEmail.getText());
         student.setSenha(inputSenha.getText());
         student.setFiliacao(inputResponsavel.getText());
+        numMatricula = String.valueOf((int)(Math.random() * 100000));
+        student.setMatricula(numMatricula);
         try {
             Date parsedDate = dateFormat.parse(inputDtNasc.getText());
             student.setDataNascimento(parsedDate);
             try {
                 dao.createStudent(student);
-                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso!");
+                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: "+numMatricula);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar estudante: " + ex.getMessage());
             }
