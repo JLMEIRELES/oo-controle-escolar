@@ -1,30 +1,49 @@
 package model;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
-public class Team {
+@Entity
+@Table(name = "school_class")
+public class SchoolClass {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     @Column
     private String codigo;
+
     @Column
     private String nome;
+
     @Column
-    private Date dataInicio;
+    private LocalDate dataInicio;
+
     @Column
-    private Date dataFim;
+    private LocalDate dataFim;
+
     @Column
     private String turno;
-    @Column
-    private String tipoTurma;
 
-    public Team(String codigo, String nome, Date dataInicio, Date dataFim, String turno, String tipoTurma) {
+    public SchoolClass(){
+
+    }
+
+    public SchoolClass(String codigo, String nome, LocalDate dataInicio, LocalDate dataFim, String turno){
         this.codigo = codigo;
         this.nome = nome;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.turno = turno;
-        this.tipoTurma = tipoTurma;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCodigo() {
@@ -43,19 +62,19 @@ public class Team {
         this.nome = nome;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataFim() {
+    public LocalDate getDataFim() {
         return dataFim;
     }
 
-    public void setDataFim(Date dataFim) {
+    public void setDataFim(LocalDate dataFim) {
         this.dataFim = dataFim;
     }
 
@@ -66,13 +85,4 @@ public class Team {
     public void setTurno(String turno) {
         this.turno = turno;
     }
-
-    public String getTipoTurma() {
-        return tipoTurma;
-    }
-
-    public void setTipoTurma(String tipoTurma) {
-        this.tipoTurma = tipoTurma;
-    }
-
 }

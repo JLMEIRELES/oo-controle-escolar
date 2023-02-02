@@ -1,38 +1,38 @@
 package dao;
 
-import model.User;
+import model.Classroom;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
-public class UserDAO {
+public class ClassroomDAO {
 
     EntityManagerFactory emf;
     EntityManager em;
 
-    public UserDAO () {
+    public ClassroomDAO () {
         emf = Persistence.createEntityManagerFactory("controle-escolar");
         em = emf.createEntityManager();
     }
 
-    public void insert(User _user) {
+    public void insert(Classroom _classroom) {
         em.getTransaction().begin();
-        em.merge(_user);
+        em.merge(_classroom);
         em.getTransaction().commit();
         emf.close();
     }
 
-    public void update(User _user) {
+    public void update(Classroom _classroom) {
         em.getTransaction().begin();
-        em.merge(_user);
+        em.merge(_classroom);
         em.getTransaction().commit();
         emf.close();
     }
 
-    public void delete(User _user) {
+    public void delete(Classroom _classroom) {
         em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM users WHERE id = " + _user.getId());
+        Query q = em.createNativeQuery("DELETE FROM classroom WHERE id = " + _classroom.getId());
         q.executeUpdate();
         em.getTransaction().commit();
         emf.close();
