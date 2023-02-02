@@ -2,18 +2,26 @@ package dao;
 
 import model.Student;
 import javax.persistence.EntityManager;
-
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class StudentDAO {
+    private EntityManagerFactory entityManagerFactory;
+    private EntityManager entityManager;
 
-    private final EntityManager entityManager;
-
-    public StudentDAO(EntityManager entityManager){
-        this.entityManager = entityManager;
+    public StudentDAO() {
+        this.entityManagerFactory = Persistence.createEntityManagerFactory("controle-escolar");
+        this.entityManager = entityManagerFactory.createEntityManager();
     }
 
     public void createStudent(Student student){
-        this.entityManager.persist(student);
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(student);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+        }
     }
 
 }

@@ -1,7 +1,6 @@
 package model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -19,10 +18,10 @@ public class User {
     private String email;
     private String senha;
     @Column(name = "data_nascimento")
-    private LocalDate dataNascimento;
+    private Date dataNascimento;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_type")
+    @Column(name = "user_type",nullable=true) //vou mudar isso do nullable, eh so pra teste
     private UserType userType;
 
     public String getCpf() {
@@ -60,11 +59,11 @@ public class User {
         this.senha = senha;
     }
 
-    public LocalDate getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 }
