@@ -30,12 +30,12 @@ public class NotificationDAO {
         emf.close();
     }
 
-    public void delete(Notification _notification) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM notification WHERE id = " + _notification.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(Notification _notification) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM notification WHERE id = " + _notification.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

@@ -31,5 +31,7 @@ public class Building {
     }
 
 
-
+    public String getId() {
+        return null;
+    }
 }

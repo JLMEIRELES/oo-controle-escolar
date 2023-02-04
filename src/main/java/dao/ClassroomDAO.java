@@ -30,12 +30,12 @@ public class ClassroomDAO {
         emf.close();
     }
 
-    public void delete(Classroom _classroom) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM classroom WHERE id = " + _classroom.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(Classroom _classroom) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM classroom WHERE id = " + _classroom.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

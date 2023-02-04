@@ -30,12 +30,12 @@ public class TeamDAO {
         emf.close();
     }
 
-    public void delete(Team _team) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM team WHERE id = " + _team.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(Team _team) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM team WHERE id = " + _team.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

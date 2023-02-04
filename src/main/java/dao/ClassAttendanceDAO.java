@@ -30,12 +30,12 @@ public class ClassAttendanceDAO {
         emf.close();
     }
 
-    public void delete(ClassAttendance _classattendance) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM class_attendance WHERE id = " + _classattendance.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(ClassAttendance _classattendance) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM class_attendance WHERE id = " + _classattendance.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

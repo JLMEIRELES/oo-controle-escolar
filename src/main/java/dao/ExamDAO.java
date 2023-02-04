@@ -30,12 +30,12 @@ public class ExamDAO {
         emf.close();
     }
 
-    public void delete(Exam _exam) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM exam WHERE id = " + _exam.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(Exam _exam) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM exam WHERE id = " + _exam.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

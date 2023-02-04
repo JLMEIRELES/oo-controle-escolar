@@ -30,12 +30,12 @@ public class FinalGradeDAO {
         emf.close();
     }
 
-    public void delete(FinalGrade _finalgrade) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM final_grade WHERE id = " + _finalgrade.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(FinalGrade _finalgrade) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM final_grade WHERE id = " + _finalgrade.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

@@ -30,12 +30,12 @@ public class SubjectDAO {
         emf.close();
     }
 
-    public void delete(Subject _subject) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM subject WHERE id = " + _subject.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(Subject _subject) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM subject WHERE id = " + _subject.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }

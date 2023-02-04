@@ -30,12 +30,12 @@ public class InstitutionDAO {
         emf.close();
     }
 
-    public void delete(Institution _institution) {
-        em.getTransaction().begin();
-        Query q = em.createNativeQuery("DELETE FROM institution WHERE id = " + _institution.getId());
-        q.executeUpdate();
-        em.getTransaction().commit();
-        emf.close();
-    }
+//    public void delete(Institution _institution) {
+//        em.getTransaction().begin();
+//        Query q = em.createNativeQuery("DELETE FROM institution WHERE id = " + _institution.getId());
+//        q.executeUpdate();
+//        em.getTransaction().commit();
+//        emf.close();
+//    }
 
 }
