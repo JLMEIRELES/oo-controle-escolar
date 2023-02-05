@@ -4,7 +4,9 @@ import javax.persistence.*;
 import java.util.Date;
 
 public class Team {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Column
     private String codigo;
     @Column
@@ -25,6 +27,14 @@ public class Team {
         this.dataFim = dataFim;
         this.turno = turno;
         this.tipoTurma = tipoTurma;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCodigo() {

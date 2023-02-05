@@ -17,6 +17,13 @@ public class ClassAttendance {
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public ClassAttendance(boolean attendance){
         this.attendance = attendance;
     }

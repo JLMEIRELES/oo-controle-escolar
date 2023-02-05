@@ -19,6 +19,15 @@ public class Teacher extends User {
     public Teacher(String formacao) {
         this.formacao = formacao;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFormacao() {
         return formacao;
     }

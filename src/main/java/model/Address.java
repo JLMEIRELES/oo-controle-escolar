@@ -22,6 +22,17 @@ public class Address {
     @OneToOne(mappedBy = "address")
     private User user;
 
+    public Address(){
+
+    }
+    public Address(String logradouro, String cep, String numero, String bairro, String complemento) {
+        this.logradouro = logradouro;
+        this.cep = cep;
+        this.numero = numero;
+        this.bairro = bairro;
+        this.complemento = complemento;
+    }
+
     public int getId() {
         return id;
     }

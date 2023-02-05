@@ -21,6 +21,14 @@ public class Classroom {
         this.classroom_code = classroom_code;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setClassroomCode(String classroom_code) {
         this.classroom_code = classroom_code;
     }
