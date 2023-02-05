@@ -3,6 +3,7 @@ package gui;
 import dao.StudentDAO;
 import dao.UserDAO;
 import dao.UserDAO.*;
+import helper.DataHelper;
 import model.Student;
 import model.User;
 import util.JPAUtil;
@@ -70,7 +71,6 @@ public class CreateStudentGUI extends JFrame {
     }
 
     private void onClickConfirm(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Student student = new Student();
         StudentDAO dao = new StudentDAO();
         student.setNome(inputName.getText());
@@ -81,8 +81,7 @@ public class CreateStudentGUI extends JFrame {
         numMatricula = String.valueOf((int)(Math.random() * 100000));
         student.setMatricula(numMatricula);
         try {
-            Date parsedDate = dateFormat.parse(inputDtNasc.getText());
-            student.setDataNascimento(parsedDate);
+            student.setDataNascimento(DataHelper.stringToDate(inputDtNasc.getText()));
             try {
                 dao.createStudent(student);
                 JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: "+numMatricula);
