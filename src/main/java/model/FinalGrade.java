@@ -24,6 +24,14 @@ public class FinalGrade {
         this.mencao = mencao;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setFinalGrade(Double final_grade) {
         this.final_grade = final_grade;
     }

@@ -22,6 +22,14 @@ public class Building {
         this.building_name = building_name;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setBuildingName(String building_name) {
         this.building_name = building_name;
     }
@@ -29,7 +37,5 @@ public class Building {
     public String getBuildingName() {
         return building_name;
     }
-
-
 
 }

@@ -19,6 +19,14 @@ public class Parents extends User{
         this.filho = filho;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getFilho() {
         return filho;
     }

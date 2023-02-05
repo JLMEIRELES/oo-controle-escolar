@@ -16,6 +16,15 @@ public class Phone {
     @Column
     private boolean celular;
 
+    public Phone(){
+
+    }
+
+    public Phone(String codigo, String numero){
+        this.codigo = codigo;
+        this.numero = numero;
+    }
+
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;

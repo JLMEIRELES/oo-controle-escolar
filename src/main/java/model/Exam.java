@@ -27,6 +27,14 @@ public class Exam{
         this.evaluation = evaluation;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setExamGrade(Double exam_grade) {
         this.exam_grade = exam_grade;
     }

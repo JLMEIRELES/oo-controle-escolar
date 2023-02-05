@@ -34,6 +34,18 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Phone> phones;
 
+    public User(){
+
+    }
+
+    public User(String cpf, String nome, String email, String senha, LocalDate dataNascimento){
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataNascimento = dataNascimento;
+    }
+
     public int getId() {
         return id;
     }

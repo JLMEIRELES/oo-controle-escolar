@@ -18,6 +18,14 @@ public class Aula {
     @Column(name = "class_time")
     private LocalTime classTime;
 
+    public Aula(){
+
+    }
+    public Aula(LocalDate classDate, LocalTime classTime) {
+        this.classDate = classDate;
+        this.classTime = classTime;
+    }
+
     public int getId() {
         return id;
     }

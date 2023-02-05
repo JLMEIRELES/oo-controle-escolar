@@ -17,6 +17,18 @@ public class Records {
     @Column
     private String filiacao;
 
+    public Records(){
+
+    }
+
+    public Records(String componentesCurriculares, String codigo, String matricula, String filiacao){
+        this.componentesCurriculares = componentesCurriculares;
+        this.codigo = codigo;
+        this.matricula = matricula;
+        this.filiacao = filiacao;
+    }
+
+
     @OneToOne(optional = false)
     @JoinColumn(name = "student_id")
     private Student student;

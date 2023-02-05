@@ -22,6 +22,14 @@ public class SchoolReport {
     @PrimaryKeyJoinColumn
     private Student student;
 
+    public SchoolReport(){
+
+    }
+
+    public SchoolReport(Integer diasLetivos, Integer faltas){
+        this.diasLetivos = diasLetivos;
+        this.faltas = faltas;
+    }
 
     public int getId() {
         return id;
