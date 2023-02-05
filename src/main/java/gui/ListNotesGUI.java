@@ -9,40 +9,65 @@ import java.util.List;
 
 public class ListNotesGUI extends JFrame {
 
-    private JComboBox comboBox1;
-    private JComboBox comboBox2;
-    private JFormattedTextField formattedTextField1;
-    private JButton confirmaButton;
+    private JComboBox<String> studentsBox;
+    private JComboBox<String> bimestreBox;
+    private JList<String> studentList;
     private JTable studentTable;
-    private DefaultTableModel model;
-    public ListNotesGUI(List<Student> students) {
+    private JButton confirmaButton;
+    private JPanel listAPanel;
+    private JFormattedTextField noteBox;
+    private DefaultListModel<String> studentListModel;
+    private DefaultTableModel studentTableModel;
 
-        setTitle("Student List");
-        setSize(500, 300);
+    public ListNotesGUI() {
+        setTitle("Listar Estudantes");
+        setSize(1000, 800);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-        model = new DefaultTableModel();
-        model.addColumn("Nome");
-        model.addColumn("Matrícula");
+        studentsBox = new JComboBox<>();
+        bimestreBox = new JComboBox<>(new String[] {"Semestre 1", "Semestre 2"});
 
-        for (Student student : students) {
-            model.addRow(new Object[] {student.getNome(), student.getMatricula()});
-        }
+        JPanel listAPanel = new JPanel();
+        listAPanel.add(new JLabel("Nome do Aluno: "));
+        listAPanel.add(studentsBox);
+        listAPanel.add(new JLabel("Semestre: "));
+        listAPanel.add(bimestreBox);
 
-        studentTable = new JTable(model);
-        JScrollPane scrollPane = new JScrollPane(studentTable);
+        add(listAPanel, BorderLayout.NORTH);
 
+//        studentListModel = new DefaultListModel<>();
+//        studentList = new JList<>(studentListModel);
+//        JScrollPane scrollPane = new JScrollPane(studentList);
+//        add(scrollPane, BorderLayout.CENTER);
+
+        studentListModel = new DefaultListModel<>();
+        studentList = new JList<>(studentListModel);
+        JScrollPane scrollPane = new JScrollPane(studentList);
         add(scrollPane, BorderLayout.CENTER);
+
+        studentTableModel = new DefaultTableModel(new Object[]{"Nome", "Matrícula", "Semestre 1", "Semestre 2", "Editar"}, 0);
+        studentTable = new JTable(studentTableModel);
+        JScrollPane scrollPaneTable = new JScrollPane(studentTable);
+        add(scrollPaneTable, BorderLayout.SOUTH);
+
+        loadStudentList();
+
+
+    }
+
+
+    private void loadStudentList() {
+        StudentDAO dao = new StudentDAO();
+        List<Student> students = dao.list();
+        for (Student student : students) {
+            studentsBox.addItem(student.getNome());
+            studentTableModel.addRow(new Object[] {student.getNome(), student.getMatricula(), "2", "2"});
+        }
     }
 
     public static void main(String[] args) {
-        StudentDAO dao = new StudentDAO();
-        List<Student> students = dao.list();
-        ListNotesGUI frame = new ListNotesGUI(students);
+        ListNotesGUI frame = new ListNotesGUI();
         frame.setVisible(true);
-    }
-    private void createUIComponents() {
-        // Initialize components with "Custom Create" option here
     }
 }
