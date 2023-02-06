@@ -4,11 +4,13 @@ import dao.StudentDAO;
 import dao.UserDAO;
 import dao.UserDAO.*;
 import helper.DataHelper;
+import helper.FormatHelper;
 import model.Student;
 import model.User;
 import util.JPAUtil;
 
 import javax.swing.*;
+import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,13 +33,15 @@ public class CreateStudentGUI extends JFrame {
     private JPanel cadastroAPanel;
     MaskFormatter formatter = null;
     JFormattedTextField inputCpf;
-    private String numMatricula;
+    MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
+
+    MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
+
     public CreateStudentGUI() throws ParseException {
         cleanButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 onClickClear();
-
             }
         });
         confirmButton.addActionListener(new ActionListener() {
@@ -46,6 +50,8 @@ public class CreateStudentGUI extends JFrame {
                 onClickConfirm();
             }
         });
+        inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
+        inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
     }
 
 
@@ -78,13 +84,13 @@ public class CreateStudentGUI extends JFrame {
         student.setEmail(inputEmail.getText());
         student.setSenha(inputSenha.getText());
         student.setFiliacao(inputResponsavel.getText());
-        numMatricula = String.valueOf((int)(Math.random() * 100000));
+        String numMatricula = String.valueOf((int) (Math.random() * 100000));
         student.setMatricula(numMatricula);
         try {
             student.setDataNascimento(DataHelper.stringToDate(inputDtNasc.getText()));
             try {
                 dao.createStudent(student);
-                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: "+numMatricula);
+                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: "+ numMatricula);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar estudante: " + ex.getMessage());
             }

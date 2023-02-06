@@ -11,18 +11,15 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Objects;
 
-public class LoginFrane extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame implements ActionListener {
 
     private final UserDAO userDAO = new UserDAO(JPAUtil.getEntityManager());
     JPasswordField password;
     JTextField username;
     JLabel label_password, label_username,message,title;
-
     JButton btn;
 
-
-
-    public LoginFrane(UserDAO userDAO) throws NoSuchAlgorithmException {
+    public LoginFrame(UserDAO userDAO) throws NoSuchAlgorithmException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,600);
         this.setTitle("Login");

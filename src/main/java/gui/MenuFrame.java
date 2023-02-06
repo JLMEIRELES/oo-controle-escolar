@@ -8,10 +8,7 @@ public class MenuFrame extends JFrame {
 
     JLabel test;
 
-    private final User user;
-
     public MenuFrame(User user) {
-        this.user = user;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,600);
         this.setTitle("Menu");

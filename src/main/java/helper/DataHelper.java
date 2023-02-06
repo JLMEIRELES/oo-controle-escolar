@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class DataHelper {
 
-    private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     public static Date stringToDate(String date) throws ParseException {
        return dateFormat.parse(date);

@@ -6,11 +6,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class StudentDAO {
-    private EntityManagerFactory entityManagerFactory;
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     public StudentDAO() {
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("controle-escolar");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("controle-escolar");
         this.entityManager = entityManagerFactory.createEntityManager();
     }
 
