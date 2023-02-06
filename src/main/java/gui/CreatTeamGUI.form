@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.CreatTeamGUI">
+  <grid id="27dc6" binding="pagina" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-1644864"/>
+      <enabled value="false"/>
+      <font name="Consolas" size="10" style="3"/>
+      <foreground color="-8471988"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <hspacer id="779ca">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="a5d36">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="c8c1" class="javax.swing.JTable" binding="tabelaTurma" custom-create="true">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="60"/>
+          </grid>
+        </constraints>
+        <properties>
+          <autoCreateRowSorter value="false"/>
+          <background color="-1644864"/>
+          <dropMode value="ON_OR_INSERT_ROWS"/>
+          <enabled value="true"/>
+          <fillsViewportHeight value="false"/>
+          <font name="Consolas" size="10" style="3"/>
+          <foreground color="-16777216"/>
+          <gridColor color="-15445459"/>
+          <inheritsPopupMenu value="false"/>
+          <name value="tableaturma"/>
+          <rowHeight value="25"/>
+          <rowMargin value="15"/>
+          <showHorizontalLines value="true"/>
+          <showVerticalLines value="true"/>
+          <surrendersFocusOnKeystroke value="false"/>
+          <updateSelectionOnSort value="true"/>
+        </properties>
+      </component>
+      <component id="b54b9" class="javax.swing.JTextField" binding="InserirTurma">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-5852764"/>
+          <columns value="1"/>
+          <dropMode value="INSERT"/>
+          <font name="Symbol" size="12" style="0"/>
+          <horizontalAlignment value="2"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="68469" class="javax.swing.JLabel" binding="textAluno" custom-create="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15445459"/>
+          <enabled value="true"/>
+          <font name="Stencil" size="12" style="0"/>
+          <foreground color="-15445459"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="Aluno(a,e):"/>
+          <verticalAlignment value="1"/>
+          <verticalTextPosition value="1"/>
+        </properties>
+      </component>
+      <component id="50c31" class="javax.swing.JLabel" binding="turmas" custom-create="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-14231023"/>
+          <enabled value="true"/>
+          <font name="Droid Sans" size="20" style="1"/>
+          <foreground color="-13510119"/>
+          <horizontalAlignment value="10"/>
+          <horizontalTextPosition value="4"/>
+          <text value="TURMAS"/>
+          <verticalAlignment value="0"/>
+          <verticalTextPosition value="1"/>
+        </properties>
+      </component>
+      <component id="d9f44" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-5852764"/>
+          <editable value="false"/>
+          <font name="Symbol" size="12" style="0"/>
+        </properties>
+      </component>
+      <component id="48fbb" class="javax.swing.JLabel" custom-create="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="0" fill="0" indent="1" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-15445459"/>
+          <enabled value="true"/>
+          <font name="Stencil" size="12" style="0"/>
+          <foreground color="-15445459"/>
+          <horizontalAlignment value="0"/>
+          <horizontalTextPosition value="0"/>
+          <text value="TURMA:"/>
+          <verticalAlignment value="1"/>
+          <verticalTextPosition value="1"/>
+        </properties>
+      </component>
+      <vspacer id="5c3b9">
+        <constraints>
+          <grid row="1" column="2" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="6d3f3" class="javax.swing.JLabel" binding="TextFiltro" custom-create="true">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-13707047"/>
+          <enabled value="true"/>
+          <font name="JetBrains Mono" size="12" style="3"/>
+          <foreground color="-12566720"/>
+          <horizontalAlignment value="2"/>
+          <horizontalTextPosition value="2"/>
+          <text value="Filtrar por:"/>
+          <verticalAlignment value="0"/>
+          <verticalTextPosition value="1"/>
+        </properties>
+      </component>
+      <component id="2c1f1" class="javax.swing.JComboBox" default-binding="true">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-5852764"/>
+          <editable value="false"/>
+          <font name="Symbol" size="12" style="0"/>
+        </properties>
+      </component>
+      <component id="78c65" class="javax.swing.JButton" binding="adicionarButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Adicionar"/>
+        </properties>
+      </component>
+      <component id="3cdfa" class="javax.swing.JSeparator">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties/>
+      </component>
+    </children>
+  </grid>
+</form>
