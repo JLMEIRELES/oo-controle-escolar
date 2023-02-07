@@ -21,7 +21,7 @@ public class User {
     private Date dataNascimento;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "user_type",nullable=true) //vou mudar isso do nullable, eh so pra teste
+    @Column(name = "user_type")
     private UserType userType;
 
     public String getCpf() {
@@ -65,5 +65,13 @@ public class User {
 
     public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 }

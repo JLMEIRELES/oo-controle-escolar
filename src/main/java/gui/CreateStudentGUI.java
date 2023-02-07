@@ -7,6 +7,7 @@ import helper.DataHelper;
 import helper.FormatHelper;
 import model.Student;
 import model.User;
+import service.StudentService;
 import util.JPAUtil;
 
 import javax.swing.*;
@@ -24,6 +25,8 @@ import javax.persistence.EntityManager;
 
 public class CreateStudentGUI extends JFrame {
     private JTextField inputName;
+
+    private final StudentService studentService = new StudentService();
     private JButton confirmButton;
     private JTextField inputEmail;
     private JTextField inputSenha;
@@ -34,7 +37,6 @@ public class CreateStudentGUI extends JFrame {
     MaskFormatter formatter = null;
     JFormattedTextField inputCpf;
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
-
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
     public CreateStudentGUI() throws ParseException {
@@ -78,19 +80,16 @@ public class CreateStudentGUI extends JFrame {
 
     private void onClickConfirm(){
         Student student = new Student();
-        StudentDAO dao = new StudentDAO();
         student.setNome(inputName.getText());
         student.setCpf(inputCpf.getText());
         student.setEmail(inputEmail.getText());
         student.setSenha(inputSenha.getText());
         student.setFiliacao(inputResponsavel.getText());
-        String numMatricula = String.valueOf((int) (Math.random() * 100000));
-        student.setMatricula(numMatricula);
         try {
             student.setDataNascimento(DataHelper.stringToDate(inputDtNasc.getText()));
             try {
-                dao.createStudent(student);
-                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: "+ numMatricula);
+                Student persistedStudent = studentService.createStudent(student);
+                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: " + persistedStudent.getMatricula());
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, "Erro ao cadastrar estudante: " + ex.getMessage());
             }

@@ -10,7 +10,7 @@ public class App {
 
     public static void main(String[] args) throws NoSuchAlgorithmException {
         System.out.println("Hello World");
-        LoginFrame frame = new LoginFrame(new UserDAO(JPAUtil.getEntityManager()));
+        LoginFrame frame = new LoginFrame(new UserDAO());
     }
 
 }

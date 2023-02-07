@@ -18,6 +18,7 @@ public class MenuFrame extends JFrame {
         test = new JLabel("Email");
         test.setBounds(200,150,100,40);
 
+        this.add(test);
         this.setVisible(true);
 
     }

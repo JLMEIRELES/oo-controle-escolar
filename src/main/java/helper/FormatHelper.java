@@ -9,4 +9,8 @@ public class FormatHelper {
         return new DefaultFormatterFactory(formatter);
     }
 
+    public static String generateMatricula(){
+        return String.valueOf((int) (Math.random() * 100000));
+    }
+
 }

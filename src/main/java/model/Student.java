@@ -37,7 +37,4 @@ public class Student extends User{
         this.filiacao = filiacao;
     }
 
-
 }
-
-

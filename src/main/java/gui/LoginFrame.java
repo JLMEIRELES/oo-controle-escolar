@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
-    private final UserDAO userDAO = new UserDAO(JPAUtil.getEntityManager());
+    private final UserDAO userDAO = new UserDAO();
     JPasswordField password;
     JTextField username;
     JLabel label_password, label_username,message,title;
