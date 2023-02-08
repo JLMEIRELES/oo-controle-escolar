@@ -1,5 +1,6 @@
 package gui;
 
+import helper.ButtonHelper;
 import helper.DataHelper;
 import helper.FormatHelper;
 import model.Student;
@@ -20,6 +21,8 @@ public class CreateStudentGUI extends JFrame {
     private JTextField inputResponsavel;
     private JFormattedTextField inputDtNasc;
     private JButton cleanButton;
+
+    private JButton turnBackButton;
     private JPanel cadastroAPanel;
     JFormattedTextField inputCpf;
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
@@ -44,6 +47,7 @@ public class CreateStudentGUI extends JFrame {
         });
         inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
         inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
+        ButtonHelper.createButtonToRedirect("Voltar", this, new MenuFrame(user));
     }
 
     private void onClickClear() {
@@ -54,6 +58,8 @@ public class CreateStudentGUI extends JFrame {
         inputResponsavel.setText("");
         inputSenha.setText("");
     }
+
+
 
     private void onClickConfirm(){
         Student student = new Student();

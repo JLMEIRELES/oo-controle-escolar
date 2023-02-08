@@ -1,6 +1,7 @@
 package dao;
 
 import model.Teacher;
+import model.Team;
 import model.User;
 import util.JPAUtil;
 
@@ -45,4 +46,10 @@ public class TeacherDAO {
         }
         return teacher;
     }
+
+    public List<Team> getTeams(Teacher teacher){
+        String jpql = "SELECT t FROM Team t WHERE t.Teacher = :teacher";
+        return entityManager.createQuery(jpql, Team.class).setParameter("teacher", teacher).getResultList();
+    }
+
 }

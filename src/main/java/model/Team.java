@@ -1,15 +1,32 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "teams")
 public class Team {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(unique = true)
     private String codigo;
     private String nome;
+    @Column(name = "data_inicio")
     private Date dataInicio;
+    @Column(name = "data_fim")
     private Date dataFim;
     private String turno;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "class_type")
     private EnumTypeClass tipoTurma;
+    @ManyToOne
+    @JoinColumn(name="teacher_id")
+    private Teacher teacher;
+
+    public Team() {
+    }
 
     public Team(String codigo, String nome, Date dataInicio, Date dataFim, String turno, EnumTypeClass tipoTurma) {
         this.codigo = codigo;
@@ -18,6 +35,10 @@ public class Team {
         this.dataFim = dataFim;
         this.turno = turno;
         this.tipoTurma = tipoTurma;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getCodigo() {
@@ -68,4 +89,11 @@ public class Team {
         this.tipoTurma = tipoTurma;
     }
 
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
 }
