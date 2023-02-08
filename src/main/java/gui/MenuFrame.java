@@ -18,7 +18,7 @@ public class MenuFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 
-        teacherBtn = ButtonHelper.createButtonToRedirect("Cadastrar Professor", this, new TeachersRegisterFrame(user));
+        teacherBtn = ButtonHelper.createButtonToRedirect("Cadastrar Professor", this, new CreateTeacherGUI(user));
         studentBtn = ButtonHelper.createButtonToRedirect("Cadastrar Aluno", this, new CreateStudentGUI(user));
 
         teacherBtn.setBounds(200,100,300,40);

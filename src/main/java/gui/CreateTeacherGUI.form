@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="gui.CreateTeacherGUI">
+  <grid id="27dc6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="833" height="400"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="9005b" binding="cadastroAPanel" layout-manager="GridLayoutManager" row-count="5" column-count="7" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-262664"/>
+          <foreground color="-262664"/>
+          <preferredSize width="1280" height="720"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <component id="5db0c" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <focusable value="true"/>
+              <font name="Yu Gothic UI Semibold" size="36"/>
+              <foreground color="-11753728"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="Cadastrar Professor"/>
+            </properties>
+          </component>
+          <component id="64548" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <font name="Yu Gothic UI" size="20"/>
+              <foreground color="-16185070"/>
+              <text value="Nome:"/>
+            </properties>
+          </component>
+          <component id="6d378" class="javax.swing.JTextField" binding="inputName">
+            <constraints>
+              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="198" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <font name="Yu Gothic Light" size="14"/>
+              <foreground color="-16185070"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="c61c4" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <font name="Yu Gothic UI" size="20"/>
+              <foreground color="-16185070"/>
+              <text value="CPF:"/>
+            </properties>
+          </component>
+          <component id="dc508" class="javax.swing.JFormattedTextField" binding="inputCpf">
+            <constraints>
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="198" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <font name="Yu Gothic Light" size="14"/>
+              <foreground color="-16185070"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="c97" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <font name="Yu Gothic UI" size="20"/>
+              <foreground color="-16185070"/>
+              <text value="Email:"/>
+            </properties>
+          </component>
+          <component id="a0af7" class="javax.swing.JTextField" binding="inputEmail">
+            <constraints>
+              <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="198" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <font name="Yu Gothic Light" size="14"/>
+              <foreground color="-16185070"/>
+              <text value=""/>
+            </properties>
+          </component>
+          <component id="78713" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <font name="Yu Gothic UI" size="20"/>
+              <foreground color="-16185070"/>
+              <text value="Senha:"/>
+            </properties>
+          </component>
+          <hspacer id="b9ea3">
+            <constraints>
+              <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="44" height="11"/>
+              </grid>
+            </constraints>
+          </hspacer>
+          <component id="b6947" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <enabled value="true"/>
+              <focusable value="true"/>
+              <font name="Yu Gothic UI" size="20"/>
+              <foreground color="-16185070"/>
+              <text value="Formação"/>
+            </properties>
+          </component>
+          <component id="2deb2" class="javax.swing.JTextField" binding="inputFormacao">
+            <constraints>
+              <grid row="2" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <font name="Yu Gothic Light" size="14"/>
+              <foreground color="-16185070"/>
+            </properties>
+          </component>
+          <component id="879ed" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16185070"/>
+              <enabled value="true"/>
+              <font name="Yu Gothic UI" size="20"/>
+              <foreground color="-16185070"/>
+              <text value="Data de Nascimento:"/>
+            </properties>
+          </component>
+          <component id="88047" class="javax.swing.JButton" binding="confirmButton">
+            <constraints>
+              <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="100" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-11753728"/>
+              <borderPainted value="true"/>
+              <defaultCapable value="true"/>
+              <focusPainted value="true"/>
+              <font name="Yu Gothic UI Semibold" size="14"/>
+              <foreground color="-262664"/>
+              <hideActionText value="false"/>
+              <selected value="false"/>
+              <text value="CONFIRMAR"/>
+            </properties>
+          </component>
+          <component id="c296" class="javax.swing.JButton" binding="cleanButton">
+            <constraints>
+              <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="70" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-11753728"/>
+              <font name="Yu Gothic UI Semibold" size="16"/>
+              <foreground color="-262664"/>
+              <text value="LIMPAR"/>
+            </properties>
+          </component>
+          <hspacer id="da009">
+            <constraints>
+              <grid row="1" column="6" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <hspacer id="95828">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+          </hspacer>
+          <component id="218bf" class="javax.swing.JPasswordField" binding="inputSenha">
+            <constraints>
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="198" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+            </properties>
+          </component>
+          <component id="42942" class="javax.swing.JFormattedTextField" binding="inputDtNasc">
+            <constraints>
+              <grid row="1" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                <preferred-size width="198" height="30"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-1"/>
+              <focusLostBehavior value="1"/>
+              <text value=""/>
+            </properties>
+            <clientProperties>
+              <html.disable class="java.lang.Boolean" value="false"/>
+            </clientProperties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
