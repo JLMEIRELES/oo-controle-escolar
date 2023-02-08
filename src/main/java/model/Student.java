@@ -1,17 +1,19 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "students")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Student extends User{
-
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String matricula;
     private String filiacao;
+
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private List<Note> notes;
 
     public Student(){
 
@@ -37,6 +39,13 @@ public class Student extends User{
         this.filiacao = filiacao;
     }
 
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
+    }
 
 }
 
