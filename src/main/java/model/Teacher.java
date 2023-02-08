@@ -11,8 +11,11 @@ public class Teacher extends User {
     private Long id;
     private String formacao;
 
-    public Teacher(String formacao){
+    private String matricula;
+
+    public Teacher(String formacao, String matricula) {
         this.formacao = formacao;
+        this.matricula = matricula;
     }
 
     public Teacher(){
@@ -27,4 +30,11 @@ public class Teacher extends User {
         this.formacao = formacao;
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
 }

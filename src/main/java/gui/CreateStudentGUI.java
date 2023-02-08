@@ -1,31 +1,18 @@
 package gui;
 
-import dao.StudentDAO;
-import dao.UserDAO;
-import dao.UserDAO.*;
 import helper.DataHelper;
 import helper.FormatHelper;
 import model.Student;
 import model.User;
 import service.StudentService;
-import util.JPAUtil;
 
 import javax.swing.*;
-import javax.swing.text.DefaultFormatterFactory;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusAdapter;
-import java.awt.event.FocusEvent;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-import javax.persistence.EntityManager;
-
 public class CreateStudentGUI extends JFrame {
     private JTextField inputName;
-
     private final StudentService studentService = new StudentService();
     private JButton confirmButton;
     private JTextField inputEmail;
@@ -34,12 +21,15 @@ public class CreateStudentGUI extends JFrame {
     private JFormattedTextField inputDtNasc;
     private JButton cleanButton;
     private JPanel cadastroAPanel;
-    MaskFormatter formatter = null;
     JFormattedTextField inputCpf;
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    public CreateStudentGUI() throws ParseException {
+    public CreateStudentGUI(User user) throws ParseException {
+        this.setTitle("Cadastrar Aluno");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setContentPane(this.cadastroAPanel);
+        this.pack();
         cleanButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,19 +44,6 @@ public class CreateStudentGUI extends JFrame {
         });
         inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
         inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
-    }
-
-
-    public static void main(String[] args) throws ParseException {
-        JFrame frame = new JFrame("Cadastrar Aluno");
-        try {
-            frame.setContentPane(new CreateStudentGUI().cadastroAPanel);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-        frame.setVisible(true);
     }
 
     private void onClickClear() {

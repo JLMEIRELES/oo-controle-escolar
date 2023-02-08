@@ -1,25 +1,38 @@
 package gui;
 
+import helper.ButtonHelper;
 import model.User;
+import model.UserType;
 
 import javax.swing.*;
+import java.text.ParseException;
 
 public class MenuFrame extends JFrame {
 
-    JLabel test;
+    JButton teacherBtn, studentBtn;
 
-    public MenuFrame(User user) {
+    public MenuFrame(User user) throws ParseException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,600);
         this.setTitle("Menu");
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 
-        test = new JLabel("Email");
-        test.setBounds(200,150,100,40);
+        teacherBtn = ButtonHelper.createButtonToRedirect("Cadastrar Professor", this, new TeachersRegisterFrame(user));
+        studentBtn = ButtonHelper.createButtonToRedirect("Cadastrar Aluno", this, new CreateStudentGUI(user));
 
-        this.add(test);
+        teacherBtn.setBounds(200,100,300,40);
+
+        studentBtn.setBounds(200,200,300,40);
+
+        if(user.getUserType() == UserType.ADM){
+            this.add(teacherBtn);
+            this.add(studentBtn);
+        }
+
         this.setVisible(true);
 
     }
+
+
 }

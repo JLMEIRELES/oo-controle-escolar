@@ -32,8 +32,6 @@ public class StudentDAO {
         return user.orElse(null);
     }
 
-
-
     public Student createStudent(Student student){
         try {
             entityManager.getTransaction().begin();
@@ -44,5 +42,4 @@ public class StudentDAO {
         }
         return student;
     }
-
 }

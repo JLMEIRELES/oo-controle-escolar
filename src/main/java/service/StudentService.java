@@ -7,16 +7,13 @@ import model.Student;
 import model.User;
 import model.UserType;
 
-import java.io.UnsupportedEncodingException;
-
-
 public class StudentService {
 
     private final StudentDAO studentDAO = new StudentDAO();
 
     private final UserDAO userDAO = new UserDAO();
 
-    public Student createStudent(Student student) throws UnsupportedEncodingException {
+    public Student createStudent(Student student) {
         student.setMatricula(generateMatricula());
         Student persistedStudent = this.studentDAO.createStudent(student);
         User user = this.studentDAO.getUser(persistedStudent);
@@ -26,7 +23,7 @@ public class StudentService {
     }
 
     public String generateMatricula(){
-        String numMatricula = FormatHelper.generateMatricula();
+        String numMatricula = FormatHelper.generateMatriculaStudent();
         return studentDAO.getStudentByMatricula(numMatricula) == null ? numMatricula : generateMatricula();
     }
 
