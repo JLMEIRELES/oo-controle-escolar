@@ -26,14 +26,6 @@ public class CreateTeacherGUI extends JFrame {
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    /*public CreateTeacherGUI(User user) {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800,600);
-        this.setTitle("Menu");
-        this.setLocationRelativeTo(null);
-        this.setLayout(null);
-    }*/
-
     public CreateTeacherGUI(User user) throws ParseException {
         this.setTitle("Cadastrar Professor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
