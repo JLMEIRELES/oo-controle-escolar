@@ -1,8 +1,11 @@
 package dao;
 
 import model.User;
+import util.JPAUtil;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -15,12 +18,18 @@ public class UserDAO {
 
     private final EntityManager entityManager;
 
-    public UserDAO(EntityManager entityManager) throws NoSuchAlgorithmException {
-        this.entityManager = entityManager;
+    public UserDAO()  {
+        this.entityManager = JPAUtil.getEntityManager();
     }
 
     public void createUser(User user) throws UnsupportedEncodingException {
         this.entityManager.persist(user);
+    }
+
+    public void updateUser(User user){
+        entityManager.getTransaction().begin();
+        this.entityManager.merge(user);
+        entityManager.getTransaction().commit();
     }
 
     public List<User> findUserByEmailAndPassword(String email, String password){

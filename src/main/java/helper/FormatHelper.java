@@ -9,4 +9,13 @@ public class FormatHelper {
         return new DefaultFormatterFactory(formatter);
     }
 
+    public static String generateMatriculaStudent(){
+        return String.valueOf((int) (Math.random() * 100000));
+    }
+
+    public static String generateMatriculaTeacher(){
+        return String.valueOf((int) (Math.random() * 10000));
+    }
+
+
 }

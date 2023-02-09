@@ -1,25 +1,23 @@
 package gui;
 
-import dao.UserDAO;
 import model.User;
-import util.JPAUtil;
+import service.UserService;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.security.NoSuchAlgorithmException;
-import java.util.List;
+import java.text.ParseException;
 import java.util.Objects;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
-    private final UserDAO userDAO = new UserDAO(JPAUtil.getEntityManager());
+    private final UserService userService = new UserService();
     JPasswordField password;
     JTextField username;
-    JLabel label_password, label_username,message,title;
+    JLabel label_password, label_username,message;
     JButton btn;
 
-    public LoginFrame(UserDAO userDAO) throws NoSuchAlgorithmException {
+    public LoginFrame() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(800,600);
         this.setTitle("Login");
@@ -38,7 +36,7 @@ public class LoginFrame extends JFrame implements ActionListener {
         password = new JPasswordField();
         password.setBounds(300,200,300,40);
 
-        message = new JLabel("Message Here");
+        message = new JLabel("");
         message.setBounds(300,330,300,40);
 
 
@@ -66,22 +64,19 @@ public class LoginFrame extends JFrame implements ActionListener {
             message.setText("Usuário e/ou senha em branco");
             return;
         }
-       User user = getUser(usernameText, passwordValue);
+       User user = userService.login(usernameText, passwordValue);
        String msg = "Usuário e/ou senha incorretos";
         if (user == null) {
             message.setText(msg);
         } else {
-            this.setVisible(false);
-            MenuFrame menuFrame = new MenuFrame(user);
-            menuFrame.setVisible(true);
+            try {
+               MenuFrame menuFrame = new MenuFrame(user);
+               this.setVisible(false);
+               menuFrame.setVisible(true);
+            } catch (ParseException ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 
-    public User getUser(String username, String password){
-        List<User> userList = userDAO.findUserByEmailAndPassword(username, password);
-        if (userList.stream().findFirst().isPresent()){
-            return userList.stream().findFirst().get();
-        }
-        return null;
-    }
 }

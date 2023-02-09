@@ -2,31 +2,40 @@ package gui;
 
 import helper.DataHelper;
 import helper.FormatHelper;
-import model.Student;
+import model.Teacher;
 import model.User;
-import service.StudentService;
+import service.TeacherService;
 
 import javax.swing.*;
 import javax.swing.text.MaskFormatter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
-public class CreateStudentGUI extends JFrame {
-    private JTextField inputName;
-    private final StudentService studentService = new StudentService();
-    private JButton confirmButton;
-    private JTextField inputEmail;
-    private JTextField inputSenha;
-    private JTextField inputResponsavel;
-    private JFormattedTextField inputDtNasc;
-    private JButton cleanButton;
+
+public class CreateTeacherGUI extends JFrame {
     private JPanel cadastroAPanel;
+    private final TeacherService teacherService = new TeacherService();
+    private JTextField inputName;
+    private JTextField inputEmail;
+    private JTextField inputFormacao;
+    private JButton confirmButton;
+    private JButton cleanButton;
+    private JPasswordField inputSenha;
+    private JFormattedTextField inputDtNasc;
     JFormattedTextField inputCpf;
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    public CreateStudentGUI(User user) throws ParseException {
-        this.setTitle("Cadastrar Aluno");
+    /*public CreateTeacherGUI(User user) {
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setSize(800,600);
+        this.setTitle("Menu");
+        this.setLocationRelativeTo(null);
+        this.setLayout(null);
+    }*/
+
+    public CreateTeacherGUI(User user) throws ParseException {
+        this.setTitle("Cadastrar Professor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(this.cadastroAPanel);
         this.pack();
@@ -36,12 +45,7 @@ public class CreateStudentGUI extends JFrame {
                 onClickClear();
             }
         });
-        confirmButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                onClickConfirm();
-            }
-        });
+        confirmButton.addActionListener(e -> onClickConfirm());
         inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
         inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
     }
@@ -51,24 +55,24 @@ public class CreateStudentGUI extends JFrame {
         inputDtNasc.setText("");
         inputEmail.setText("");
         inputName.setText("");
-        inputResponsavel.setText("");
+        inputFormacao.setText("");
         inputSenha.setText("");
     }
 
     private void onClickConfirm(){
-        Student student = new Student();
-        student.setNome(inputName.getText());
-        student.setCpf(inputCpf.getText());
-        student.setEmail(inputEmail.getText());
-        student.setSenha(inputSenha.getText());
-        student.setFiliacao(inputResponsavel.getText());
+        Teacher teacher = new Teacher();
+        teacher.setNome(inputName.getText());
+        teacher.setCpf(inputCpf.getText());
+        teacher.setEmail(inputEmail.getText());
+        teacher.setSenha(inputSenha.getText());
+        teacher.setFormacao(inputFormacao.getText());
         try {
-            student.setDataNascimento(DataHelper.stringToDate(inputDtNasc.getText()));
+            teacher.setDataNascimento(DataHelper.stringToDate(inputDtNasc.getText()));
             try {
-                Student persistedStudent = studentService.createStudent(student);
-                JOptionPane.showMessageDialog(null, "Estudante cadastrado com sucesso! Matricula: " + persistedStudent.getMatricula());
+                Teacher persistedTeacher = teacherService.createTeacher(teacher);
+                JOptionPane.showMessageDialog(null, "Professor cadastrado com sucesso! Matricula: " + persistedTeacher.getMatricula());
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Erro ao cadastrar estudante: " + ex.getMessage());
+                JOptionPane.showMessageDialog(null, "Erro ao cadastrar professor: " + ex.getMessage());
             }
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Data de nascimento inválida: " + ex.getMessage() + ". Tente inserir no formato dd/mm/aaaa");
@@ -76,5 +80,3 @@ public class CreateStudentGUI extends JFrame {
 
     }
 }
-
-
