@@ -7,6 +7,8 @@ import model.Note;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
 public class ListNotesGUI extends JFrame {
@@ -31,12 +33,6 @@ public class ListNotesGUI extends JFrame {
         bimestreBox = new JComboBox<>(new String[] {"Semestre 1", "Semestre 2"});
 
         JPanel listAPanel = new JPanel();
-        listAPanel.add(new JLabel("Nome do Aluno: "));
-        listAPanel.add(studentsBox);
-        listAPanel.add(new JLabel("Semestre: "));
-        listAPanel.add(bimestreBox);
-
-        add(listAPanel, BorderLayout.NORTH);
 
         studentListModel = new DefaultListModel<>();
         studentList = new JList<>(studentListModel);
@@ -51,15 +47,29 @@ public class ListNotesGUI extends JFrame {
         loadStudentList();
 
 
+        studentList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = studentTable.rowAtPoint(e.getPoint());
+                    int column = studentTable.columnAtPoint(e.getPoint());
+                    // Get the value of the selected cell
+                    Object value = studentTable.getValueAt(row, column);
+                    // Do something with the value, such as display it in a dialog
+                    JOptionPane.showMessageDialog(ListNotesGUI.this, value);
+                }
+            }
+        });
     }
 
 
     private void loadStudentList() {
         StudentDAO dao = new StudentDAO();
+        NotesDAO daoNote = new NotesDAO();
         List<Student> students = dao.list();
+
         for (Student student : students) {
-            studentsBox.addItem(student.getNome());
-            studentTableModel.addRow(new Object[] {student.getNome(), student.getMatricula(), "2"});
+            studentTableModel.addRow(new Object[] {student.getNome(), student.getMatricula(), daoNote.findNoteByStudentId(student.getId(),1),daoNote.findNoteByStudentId(student.getId(),2)});
         }
     }
 

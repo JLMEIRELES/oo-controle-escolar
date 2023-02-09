@@ -95,6 +95,7 @@
         </constraints>
         <properties>
           <font name="Yu Gothic UI" size="18"/>
+          <model/>
           <selectionBackground color="-11753728"/>
         </properties>
       </component>

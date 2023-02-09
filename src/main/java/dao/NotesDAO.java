@@ -1,42 +1,37 @@
 package dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 import model.Note;
 
 public class NotesDAO {
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
-    public NotesDAO(EntityManager entityManager){
-        this.entityManager = entityManager;
+    public NotesDAO() {
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("controle-escolar");
+        this.entityManager = entityManagerFactory.createEntityManager();
     }
 
-    public void save(Note note){
-        entityManager.persist(note);
-    }
-
-    public Note atualizar(Note note){
-        return entityManager.merge(note);
-    }
-
-    public void excluir(Note note){
-        entityManager.remove(note);
-    }
-
-    public Note buscarPorId(Long id){
-        return entityManager.find(Note.class, id);
+    public void updateNote(Note newNote) {
+        entityManager.getTransaction().begin();
+        Note note = new Note();
+        note.setNotes(newNote.getNotes());
+        entityManager.merge(note);
+        entityManager.getTransaction().commit();
     }
 
     public List<Note> buscarTodos(){
         Query query = entityManager.createQuery("SELECT n FROM Note n");
         return query.getResultList();
     }
-    public List<Note> findNote(String student, String subject){
-        Query query = entityManager.createQuery("SELECT n FROM Note n WHERE n.Student = :Student AND n.Subject = :subject");
-        query.setParameter("student", student);
-        query.setParameter("subject", subject);
+    public List<Note> findNoteByStudentId(Long studentId, int semester){
+        Query query = entityManager.createQuery("SELECT n FROM Note n WHERE n.student.id = :studentId AND n.semester = :semester");
+        query.setParameter("studentId", studentId);
+        query.setParameter("semester", semester);
         return query.getResultList();
     }
 }
