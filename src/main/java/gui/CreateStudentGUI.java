@@ -28,7 +28,7 @@ public class CreateStudentGUI extends JFrame {
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    public CreateStudentGUI(User user) throws ParseException {
+    public CreateStudentGUI(User user, JFrame pastFrame) throws ParseException {
         this.setTitle("Cadastrar Aluno");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(this.cadastroAPanel);
@@ -47,7 +47,7 @@ public class CreateStudentGUI extends JFrame {
         });
         inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
         inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
-        ButtonHelper.createButtonToRedirect("Voltar", this, new MenuFrame(user));
+        turnBackButton.addActionListener(ButtonHelper.buttonToTurnBack(this, pastFrame));
     }
 
     private void onClickClear() {
@@ -58,8 +58,6 @@ public class CreateStudentGUI extends JFrame {
         inputResponsavel.setText("");
         inputSenha.setText("");
     }
-
-
 
     private void onClickConfirm(){
         Student student = new Student();
@@ -82,5 +80,3 @@ public class CreateStudentGUI extends JFrame {
 
     }
 }
-
-

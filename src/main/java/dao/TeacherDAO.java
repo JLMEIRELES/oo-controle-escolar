@@ -48,8 +48,11 @@ public class TeacherDAO {
     }
 
     public List<Team> getTeams(Teacher teacher){
-        String jpql = "SELECT t FROM Team t WHERE t.Teacher = :teacher";
+        String jpql = "SELECT t FROM Team t WHERE t.teacher = :teacher";
         return entityManager.createQuery(jpql, Team.class).setParameter("teacher", teacher).getResultList();
     }
 
+    public Teacher getTeacherByUser(User user){
+        return (Teacher) user;
+    }
 }

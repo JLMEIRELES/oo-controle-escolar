@@ -3,6 +3,7 @@ package helper;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ButtonHelper {
 
@@ -16,4 +17,13 @@ public class ButtonHelper {
         });
     }
 
+    public static ActionListener buttonToTurnBack(JFrame actualJFrame, JFrame pastFrame) {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                actualJFrame.setVisible(false);
+                pastFrame.setVisible(true);
+            }
+        };
+    }
 }

@@ -23,4 +23,7 @@ public class TeamDAO {
         return teacher.orElse(null);
     }
 
+    public void createTeam(Team team) {
+        this.entityManager.persist(team);
+    }
 }

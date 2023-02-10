@@ -9,7 +9,7 @@ import java.text.ParseException;
 
 public class MenuFrame extends JFrame {
 
-    JButton teacherBtn, studentBtn;
+    JButton teacherBtn, studentBtn, myTeams;
 
     public MenuFrame(User user) throws ParseException {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,8 +18,8 @@ public class MenuFrame extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(null);
 
-        teacherBtn = ButtonHelper.createButtonToRedirect("Cadastrar Professor", this, new CreateTeacherGUI(user));
-        studentBtn = ButtonHelper.createButtonToRedirect("Cadastrar Aluno", this, new CreateStudentGUI(user));
+        teacherBtn = ButtonHelper.createButtonToRedirect("Cadastrar Professor", this, new CreateTeacherGUI(user, this));
+        studentBtn = ButtonHelper.createButtonToRedirect("Cadastrar Aluno", this, new CreateStudentGUI(user, this));
 
         teacherBtn.setBounds(200,100,300,40);
 
@@ -28,9 +28,11 @@ public class MenuFrame extends JFrame {
         if(user.getUserType() == UserType.ADM){
             this.add(teacherBtn);
             this.add(studentBtn);
+        } else if (user.getUserType() == UserType.TEACHER) {
+            //myTeams = ButtonHelper.createButtonToRedirect("Minhas Turmas", this, new TeamsForTeacherFrame(user, this));
+            myTeams.setBounds(200,200,300,40);
+            this.add(myTeams);
         }
-
-        this.setVisible(true);
     }
 
 
