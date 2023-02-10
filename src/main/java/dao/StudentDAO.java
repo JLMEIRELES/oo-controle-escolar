@@ -1,10 +1,13 @@
 package dao;
 
 import model.Student;
+import model.Note;
 import model.User;
-import util.JPAUtil;
-
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import util.JPAUtil;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
@@ -42,4 +45,10 @@ public class StudentDAO {
         }
         return student;
     }
+    public List<Student> list() {
+        Query q = entityManager.createQuery("SELECT s FROM Student s");
+        List<Student> students = q.getResultList();
+        return students;
+    }
+
 }
