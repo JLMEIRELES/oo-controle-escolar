@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "teachers")
@@ -10,8 +11,11 @@ public class Teacher extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String formacao;
-
+    @Column(unique = true)
     private String matricula;
+
+    @OneToMany(mappedBy = "teacher")
+    private List<Team> teams;
 
     public Teacher(String formacao, String matricula) {
         this.formacao = formacao;

@@ -1,5 +1,6 @@
 package gui;
 
+import helper.ButtonHelper;
 import helper.DataHelper;
 import helper.FormatHelper;
 import model.Student;
@@ -20,12 +21,14 @@ public class CreateStudentGUI extends JFrame {
     private JTextField inputResponsavel;
     private JFormattedTextField inputDtNasc;
     private JButton cleanButton;
+
+    private JButton turnBackButton;
     private JPanel cadastroAPanel;
     JFormattedTextField inputCpf;
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    public CreateStudentGUI(User user) throws ParseException {
+    public CreateStudentGUI(User user, JFrame pastFrame) throws ParseException {
         this.setTitle("Cadastrar Aluno");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(this.cadastroAPanel);
@@ -44,6 +47,7 @@ public class CreateStudentGUI extends JFrame {
         });
         inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
         inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
+        turnBackButton.addActionListener(ButtonHelper.buttonToTurnBack(this, pastFrame));
     }
 
     private void onClickClear() {
@@ -76,5 +80,3 @@ public class CreateStudentGUI extends JFrame {
 
     }
 }
-
-

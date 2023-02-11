@@ -19,22 +19,14 @@ public class CreateTeacherGUI extends JFrame {
     private JTextField inputEmail;
     private JTextField inputFormacao;
     private JButton confirmButton;
-    private JButton cleanButton;
+    private JButton cleanButton, turnBackButton;
     private JPasswordField inputSenha;
     private JFormattedTextField inputDtNasc;
     JFormattedTextField inputCpf;
     MaskFormatter cpfFormatter = new MaskFormatter("###.###.###-##");
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
-    /*public CreateTeacherGUI(User user) {
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800,600);
-        this.setTitle("Menu");
-        this.setLocationRelativeTo(null);
-        this.setLayout(null);
-    }*/
-
-    public CreateTeacherGUI(User user) throws ParseException {
+    public CreateTeacherGUI(User user, JFrame pastFrame) throws ParseException {
         this.setTitle("Cadastrar Professor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(this.cadastroAPanel);
@@ -77,6 +69,5 @@ public class CreateTeacherGUI extends JFrame {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Data de nascimento inválida: " + ex.getMessage() + ". Tente inserir no formato dd/mm/aaaa");
         }
-
     }
 }

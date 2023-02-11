@@ -9,6 +9,7 @@ import java.util.List;
 public class Student extends User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String matricula;
     private String filiacao;
 
