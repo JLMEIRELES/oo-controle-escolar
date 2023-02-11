@@ -20,7 +20,6 @@ public class ListTeamGUI extends JFrame{
     private JList<String> TeamList;
     private JPanel listAPanel;
     private JComboBox<String> TeamBox;
-    private JButton confirmaButton;
     private JButton turnBackButton;
     private JTable teamTable;
     private DefaultListModel<String> teamListModel;
@@ -63,7 +62,7 @@ public class ListTeamGUI extends JFrame{
                 teamTable.getColumn("Abrir").setCellRenderer(new ButtonRenderer());
                 teamTable.getColumn("Abrir").setCellEditor(
                         new ButtonEditor(new JCheckBox(), this, team));
-                JScrollPane scroll = new JScrollPane(teamTable);
+                JScrollPane scroll = new JScrollPane(listAPanel);
                 getContentPane().add(scroll);
                 //setSize(400, 100);
             }
