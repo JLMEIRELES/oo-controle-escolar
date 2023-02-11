@@ -1,10 +1,12 @@
 package dao;
 
+import model.Student;
 import model.Teacher;
 import model.Team;
 import util.JPAUtil;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,5 +27,10 @@ public class TeamDAO {
 
     public void createTeam(Team team) {
         this.entityManager.persist(team);
+    }
+    public List<Team> list() {
+        Query q = entityManager.createQuery("SELECT s FROM teams s");
+        List<Team> teams = q.getResultList();
+        return teams;
     }
 }
