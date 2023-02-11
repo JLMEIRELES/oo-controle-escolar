@@ -28,7 +28,7 @@ public class MenuFrame extends JFrame {
 
         studentBtn.setBounds(200,200,300,40);
 
-        teamBtn.setBounds(200,300,300,40);
+        teamBtn.setBounds(200,200,300,40);
 
         if(user.getUserType() == UserType.ADM){
             this.add(teacherBtn);
