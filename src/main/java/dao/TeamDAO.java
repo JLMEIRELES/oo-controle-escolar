@@ -23,7 +23,14 @@ public class TeamDAO {
         return teacher.orElse(null);
     }
 
-    public void createTeam(Team team) {
-        this.entityManager.persist(team);
+    public Team createTeam(Team team) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(team);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+        }
+        return team;
     }
 }

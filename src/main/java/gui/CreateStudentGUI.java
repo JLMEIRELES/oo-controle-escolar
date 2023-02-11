@@ -31,7 +31,7 @@ public class CreateStudentGUI extends JFrame {
     public CreateStudentGUI(User user, JFrame pastFrame) throws ParseException {
         this.setTitle("Cadastrar Aluno");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setContentPane(this.cadastroAPanel);
+        this.setContentPane(cadastroAPanel);
         this.pack();
         cleanButton.addActionListener(new ActionListener() {
             @Override
