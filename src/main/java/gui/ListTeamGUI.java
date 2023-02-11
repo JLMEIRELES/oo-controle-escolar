@@ -65,12 +65,8 @@ public class ListTeamGUI extends JFrame{
                         new ButtonEditor(new JCheckBox(), this, team));
                 JScrollPane scroll = new JScrollPane(teamTable);
                 getContentPane().add(scroll);
-                setSize(400, 100);
+                //setSize(400, 100);
             }
         }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
 
