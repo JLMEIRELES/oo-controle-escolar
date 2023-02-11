@@ -25,8 +25,22 @@ public class TeamDAO {
         return teacher.orElse(null);
     }
 
-    public void createTeam(Team team) {
-        this.entityManager.persist(team);
+    public Team getTeamByCode(String code){
+        String jpql = "SELECT t FROM Team t WHERE t.codigo =:code";
+        List<Team> teamList = entityManager.createQuery(jpql, Team.class).setParameter("code", code).getResultList();
+        Optional<Team> team = teamList.stream().findFirst();
+        return team.orElse(null);
+    }
+
+    public Team createTeam(Team team) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(team);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+        }
+        return team;
     }
 
 }

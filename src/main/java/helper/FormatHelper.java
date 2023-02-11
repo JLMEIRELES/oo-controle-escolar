@@ -17,5 +17,10 @@ public class FormatHelper {
         return String.valueOf((int) (Math.random() * 10000));
     }
 
+    public static String generateCodigoTurma(String nomeTurma){
+        nomeTurma = nomeTurma.toUpperCase();
+        String formattedName = nomeTurma.length() < 3 ? nomeTurma : nomeTurma.substring(0, 3);
+        return formattedName + String.valueOf((int) (Math.random() * 100));
+    }
 
 }
