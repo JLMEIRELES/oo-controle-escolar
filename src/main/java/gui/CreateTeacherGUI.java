@@ -1,5 +1,6 @@
 package gui;
 
+import helper.ButtonHelper;
 import helper.DataHelper;
 import helper.FormatHelper;
 import model.Teacher;
@@ -40,6 +41,7 @@ public class CreateTeacherGUI extends JFrame {
         confirmButton.addActionListener(e -> onClickConfirm());
         inputCpf.setFormatterFactory(FormatHelper.generateFomatter(cpfFormatter));
         inputDtNasc.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
+        turnBackButton.addActionListener(ButtonHelper.buttonToTurnBack(this, pastFrame));
     }
 
     private void onClickClear() {

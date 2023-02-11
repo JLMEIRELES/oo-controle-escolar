@@ -1,15 +1,18 @@
 package gui;
 
 import dao.StudentDAO;
-import model.Student;
+import gui.button.ButtonEditor;
+import gui.button.ButtonRenderer;
+import model.*;
 import dao.NotesDAO;
-import model.Note;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
+import java.util.Objects;
 
 public class ListNotesGUI extends JFrame {
 
@@ -23,7 +26,9 @@ public class ListNotesGUI extends JFrame {
     private DefaultListModel<String> studentListModel;
     private DefaultTableModel studentTableModel;
 
-    public ListNotesGUI() {
+    private NotesDAO notesDAO = new NotesDAO();
+
+    public ListNotesGUI(Team team, JFrame pastFrame) {
         setTitle("Listar Estudantes");
         setSize(1000, 800);
         setLocationRelativeTo(null);
@@ -39,12 +44,12 @@ public class ListNotesGUI extends JFrame {
         JScrollPane scrollPane = new JScrollPane(studentList);
         add(scrollPane, BorderLayout.CENTER);
 
-        studentTableModel = new DefaultTableModel(new Object[]{"Nome", "Matrícula", "Semestre 1", "Semestre 2"}, 0);
+        studentTableModel = new DefaultTableModel(new Object[]{"Nome", "Matrícula", "Nota"}, 0);
         studentTable = new JTable(studentTableModel);
         JScrollPane scrollPaneTable = new JScrollPane(studentTable);
         add(scrollPaneTable, BorderLayout.SOUTH);
 
-        loadStudentList();
+        loadStudentList(team);
 
 
         studentList.addMouseListener(new MouseAdapter() {
@@ -63,18 +68,16 @@ public class ListNotesGUI extends JFrame {
     }
 
 
-    private void loadStudentList() {
-        StudentDAO dao = new StudentDAO();
-        NotesDAO daoNote = new NotesDAO();
-        List<Student> students = dao.list();
 
-        for (Student student : students) {
-            studentTableModel.addRow(new Object[] {student.getNome(), student.getMatricula(), daoNote.findNoteByStudentId(student.getId(),1),daoNote.findNoteByStudentId(student.getId(),2)});
+    private void loadStudentList(Team team) {
+       List<?> list =  notesDAO.getTeamNotes(team);
+        for (Object object : list) {
+            Object[] array = (Object[]) object;
+            studentTableModel.addRow(new Object[] {array[0], array[1], array[2]});
+            JScrollPane scroll = new JScrollPane(studentTable);
+            getContentPane().add(scroll);
+            setSize(400, 100);
         }
     }
 
-    public static void main(String[] args) {
-        ListNotesGUI frame = new ListNotesGUI();
-        frame.setVisible(true);
-    }
 }

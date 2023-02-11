@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "teams")
@@ -24,6 +25,9 @@ public class Team {
     @ManyToOne
     @JoinColumn(name="teacher_id")
     private Teacher teacher;
+
+    @OneToMany(mappedBy = "note")
+    private List<Note> notes;
 
     public Team() {
     }

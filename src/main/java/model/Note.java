@@ -13,19 +13,15 @@ public class Note {
     private Integer semester;
 
     @ManyToOne
-    private Subject subject;
-
-    @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
 
+    @ManyToOne
+    @JoinColumn(name = "team_id")
+    private Team team;
+
     public Note(){
 
-    }
-
-    public Note(Double note, Subject subject){
-        this.note = note;
-        this.subject = subject;
     }
 
     public Double getNotes() {
@@ -34,14 +30,6 @@ public class Note {
 
     public void setNotes(Double note) {
         this.note = note;
-    }
-
-    public Subject Subject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
     }
 
     public Student getStudent() {

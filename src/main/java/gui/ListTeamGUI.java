@@ -1,7 +1,13 @@
 package gui;
 
+import dao.TeacherDAO;
+import gui.button.ButtonEditor;
+import gui.button.ButtonRenderer;
+import model.Teacher;
 import model.Team;
 import dao.TeamDAO;
+import model.User;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -17,7 +23,10 @@ public class ListTeamGUI extends JFrame{
     private DefaultListModel<String> teamListModel;
     private DefaultTableModel teamTableModel;
 
-    public ListTeamGUI() {
+    private TeacherDAO teacherDAO = new TeacherDAO();
+
+
+    public ListTeamGUI(User user, JFrame pastFrame) {
             setTitle("Listar Turmas");
             setSize(1000, 800);
             setLocationRelativeTo(null);
@@ -32,27 +41,26 @@ public class ListTeamGUI extends JFrame{
             JScrollPane scrollPane = new JScrollPane(TeamList);
             add(scrollPane, BorderLayout.CENTER);
 
-            teamTableModel = new DefaultTableModel(new Object[]{"Nome"}, 0);
+            teamTableModel = new DefaultTableModel(new Object[]{"Código", "Nome", ""}, 0);
             teamTable = new JTable(teamTableModel);
             JScrollPane scrollPaneTable = new JScrollPane(teamTable);
             add(scrollPaneTable, BorderLayout.SOUTH);
 
-            loadTeamList();
+            loadTeamList((Teacher) user);
         }
 
 
-        private void loadTeamList() {
-            TeamDAO dao = new TeamDAO();
-            List<Team> teams = dao.list();
-
+        private void loadTeamList(Teacher teacher) {
+           List<Team> teams =  teacherDAO.getTeams(teacher);
             for (Team team : teams) {
-                teamTableModel.addRow(new Object[] {team.getCodigo(), team.getNome(),1});
+                teamTableModel.addRow(new Object[] {team.getCodigo(), team.getNome()});
+                teamTable.getColumn("").setCellRenderer(new ButtonRenderer());
+                teamTable.getColumn("").setCellEditor(
+                        new ButtonEditor(new JCheckBox(), this, team));
+                JScrollPane scroll = new JScrollPane(teamTable);
+                getContentPane().add(scroll);
+                setSize(400, 100);
             }
-        }
-
-        public static void main(String[] args) {
-            gui.ListNotesGUI frame = new gui.ListNotesGUI();
-            frame.setVisible(true);
         }
 
     private void createUIComponents() {

@@ -29,7 +29,7 @@ public class MenuFrame extends JFrame {
             this.add(teacherBtn);
             this.add(studentBtn);
         } else if (user.getUserType() == UserType.TEACHER) {
-            //myTeams = ButtonHelper.createButtonToRedirect("Minhas Turmas", this, new TeamsForTeacherFrame(user, this));
+            myTeams = ButtonHelper.createButtonToRedirect("Minhas Turmas", this, new ListTeamGUI(user, this));
             myTeams.setBounds(200,200,300,40);
             this.add(myTeams);
         }

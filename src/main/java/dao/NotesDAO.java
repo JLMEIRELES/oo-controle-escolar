@@ -6,6 +6,8 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.List;
 import model.Note;
+import model.Team;
+import vo.StudentsByTeamVo;
 
 public class NotesDAO {
 
@@ -24,14 +26,15 @@ public class NotesDAO {
         entityManager.getTransaction().commit();
     }
 
-    public List<Note> buscarTodos(){
-        Query query = entityManager.createQuery("SELECT n FROM Note n");
-        return query.getResultList();
-    }
-    public List<Note> findNoteByStudentId(Long studentId, int semester){
-        Query query = entityManager.createQuery("SELECT n FROM Note n WHERE n.student.id = :studentId AND n.semester = :semester");
-        query.setParameter("studentId", studentId);
-        query.setParameter("semester", semester);
-        return query.getResultList();
+    public List<?> getTeamNotes(Team team) {
+        String jpql = "SELECT u.nome, s.matricula, n.note FROM notes n " +
+                "INNER JOIN users u " +
+                "ON u.id = n.student_id " +
+                "INNER JOIN teams t " +
+                "ON t.id = n.team_id " +
+                "INNER JOIN students s " +
+                "on u.id = s.user_id " +
+                "WHERE n.team_id = ?";
+        return entityManager.createNativeQuery(jpql).setParameter(1, team.getId()).getResultList();
     }
 }

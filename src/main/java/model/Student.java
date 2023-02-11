@@ -13,7 +13,7 @@ public class Student extends User{
     private String matricula;
     private String filiacao;
 
-    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student")
     private List<Note> notes;
 
     public Student(){

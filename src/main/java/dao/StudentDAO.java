@@ -45,6 +45,7 @@ public class StudentDAO {
         }
         return student;
     }
+
     public List<Student> list() {
         Query q = entityManager.createQuery("SELECT s FROM Student s");
         List<Student> students = q.getResultList();
