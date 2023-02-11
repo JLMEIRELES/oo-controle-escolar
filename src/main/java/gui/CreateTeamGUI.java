@@ -1,5 +1,6 @@
 package gui;
 
+import helper.ButtonHelper;
 import helper.DataHelper;
 import helper.FormatHelper;
 import model.Teacher;
@@ -23,6 +24,7 @@ public class CreateTeamGUI extends JFrame {
     private JButton cleanButton;
     private JFormattedTextField inputDtInicio;
     private JFormattedTextField inputDtFim;
+    private JButton turnBackButton;
 
     MaskFormatter dataFormatter = new MaskFormatter("##/##/####");
 
@@ -48,6 +50,7 @@ public class CreateTeamGUI extends JFrame {
         confirmButton.addActionListener(e -> onClickConfirm(user));
         inputDtInicio.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
         inputDtFim.setFormatterFactory(FormatHelper.generateFomatter(dataFormatter));
+        turnBackButton.addActionListener(ButtonHelper.buttonToTurnBack(this, pastFrame));
     }
 
     private void onClickClear() {
